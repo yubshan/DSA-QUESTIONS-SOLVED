@@ -38,15 +38,17 @@ Constraints:
 #include<string>
 using namespace std;
 char maxOccCharacter(string s){
-    int arr[26]={0};
+    int arr[26]={0}; //make an array to mark alphabets (making according to index and initilizing with all data 0 )
   
    
-    for (int i = 0 ; i < s.length()-1 ; i++ ){
-        char ch = s[i];
+    for (int i = 0 ; i < s.length() ; i++ ){
+        char ch = s[i];      
         int number = 0;
-        number = ch -'a';
-        arr[number]++;
+        number = ch -'a';    //converting character into integer for marking
+        arr[number]++;       // updating the integer array according to occuring of character 
     }
+
+    //calculating the maximum number in array
     int max = -1 , ans = 0;
     for (int i = 0 ; i < 26 ; i++){
         if (max < arr[i]){
@@ -54,14 +56,17 @@ char maxOccCharacter(string s){
             max=arr[i];
         }
     }
+
+    //calculating the marked character by the index of array with maximum value
     char finalans = 'a' + ans;
     return finalans;
 
 }
 int main (){
     string s;
+    cout << "Enter the string : ";
     cin >> s;
-    cout << s.length()<< endl<<maxOccCharacter(s) <<endl ;
+    cout <<"The maximum Occurance of letter is : "<<maxOccCharacter(s) <<endl ;
     return 0;
 
 }
